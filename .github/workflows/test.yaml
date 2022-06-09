@@ -6,4 +6,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - working-directory: 'upx-install'
+        run: |
+          wget https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz
+          tar -xvf upx-3.96-amd64_linux.tar.xz
+          ls -lah
+    
       - run: upx --version
