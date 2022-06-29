@@ -4,14 +4,10 @@ on: push
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - run: |
-          mkdir upx
-          cd upx
-          wget https://github.com/upx/upx/releases/download/v3.96/upx-3.96-amd64_linux.tar.xz
-          tar -xvf upx-3.96-amd64_linux.tar.xz
-          ls -lah
-          sudo install upx-3.96-amd64_linux/upx /usr/local/bin/upx
-    
-      - run: upx --version
+          sudo add-apt-repository -y ppa:alex-p/tesseract-ocr-devel
+          sudo apt-cache madison tesseract-ocr
+          sudo apt -y install tesseract-ocr
+          sudo apt-cache madison tesseract-ocr
